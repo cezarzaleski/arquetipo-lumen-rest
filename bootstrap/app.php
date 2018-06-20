@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
+ $app->withFacades();
 
 // $app->withEloquent();
 
@@ -82,9 +82,14 @@ $app->singleton(
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
+//Register Doctrine
+$app->register(LaravelDoctrine\ORM\DoctrineServiceProvider::class);
 class_alias('LaravelDoctrine\ORM\Facades\EntityManager', 'EntityManager');
 class_alias('LaravelDoctrine\ORM\Facades\Registry', 'Registry');
 class_alias('LaravelDoctrine\ORM\Facades\Doctrine', 'Doctrine');
+//$app->register(LaravelDoctrine\Migrations\MigrationsServiceProvider::class);
+//$app->register(\Illuminate\Mail\MailServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
 
 
 /*
