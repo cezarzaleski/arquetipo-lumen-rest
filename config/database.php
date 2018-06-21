@@ -6,6 +6,7 @@ return [
      * @see http://www.laraveldoctrine.org/docs/1.3/orm/lumen
      */
     'default' => env('DB_CONNECTION', 'mysql'),
+    'migrations' => 'migrations',
     'connections' => [
         env('DB_CONNECTION', 'mysql') => [
             'driver' => env('DB_DRIVER', 'mysql'),
