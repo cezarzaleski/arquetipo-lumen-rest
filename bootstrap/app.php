@@ -90,7 +90,7 @@ class_alias('LaravelDoctrine\ORM\Facades\Doctrine', 'Doctrine');
 //$app->register(LaravelDoctrine\Migrations\MigrationsServiceProvider::class);
 //$app->register(\Illuminate\Mail\MailServiceProvider::class);
 $app->register(App\Providers\AppServiceProvider::class);
-$app->register(\App\Providers\UsersServiceProvider::class);
+$app->register(\App\Providers\UsersProvider::class);
 
 
 /*
