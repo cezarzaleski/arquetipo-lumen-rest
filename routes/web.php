@@ -15,7 +15,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 $router->post(
-    'auth/login',
+    'v1/auth/login',
     [
         'uses' => 'AuthController@authenticate'
     ]
@@ -24,7 +24,7 @@ $router->post(
 $router->group(
     ['middleware' => 'jwt.auth'],
     function () use ($router) {
-        $router->get('users', function () {
+        $router->get('v1/users', function () {
             $users = \App\User::all();
             return response()->json($users);
         });

@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Entity\Users;
+use App\Exceptions\ServiceException;
 use App\Repository\UsersRepository;
 use Firebase\JWT\JWT;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use LaravelDoctrine\ORM\Facades\EntityManager;
 
@@ -41,20 +43,22 @@ class UsersProvider
     {
         $user = $this->recuperarUsuarioEmail($email);
         if (!$user) {
-            return response()->json([
-                'error' => 'Email não encontrado'
-            ], 400);
+            throw new ServiceException('Email não encontrado', Response::HTTP_BAD_REQUEST);
+
+//            return response()->json([
+//                'error' => 'Email não encontrado'
+//            ], Response::HTTP_BAD_REQUEST);
         }
         // Verify the password and generate the token
         if (Hash::check($password, $user->getPassword())) {
             return response()->json([
                 'token' => $this->jwt($user)
-            ], 200);
+            ], Response::HTTP_OK);
         }
         // Bad Request response
         return response()->json([
             'error' => 'Email ou senha inválidos'
-        ], 400);
+        ], Response::HTTP_FORBIDDEN);
     }
 
     /**
