@@ -35,9 +35,9 @@ class UsersController extends AbstractController
     /**
      * @return array
      */
-    public function findAll()
+    public function index()
     {
         $usuarios = $this->usersProvider->listarUsuarios();
-        return $this->serialize($usuarios, $this::SERIALIZE_JSON);
+        return response()->json(json_decode($this->serialize($usuarios, $this::SERIALIZE_JSON)));
     }
 }

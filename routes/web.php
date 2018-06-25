@@ -20,22 +20,18 @@ $router->post(
         'uses' => 'AuthController@authenticate'
     ]
 );
-$router->get(
-    'v1/users',
-    [
-        'uses' => 'UsersController@findAll'
-    ]
-);
-
-//$router->group(
-//    ['middleware' => 'jwt.auth'],
-//    function () use ($router) {
-//
-//        $router->get(
-//            'v1/users',
-//            [
-//                'uses' => 'UsersController@findAlls'
-//            ]
-//        );
-//    }
+//$router->get(
+//    'v1/users',
+//    [
+//        'uses' => 'UsersController@findAll'
+//    ]
 //);
+
+$router->group(['middleware' => 'jwt.auth'], function () use ($router) {
+    $router->get(
+        'v1/users',
+        [
+            'uses' => 'UsersController@index'
+        ]
+    );
+});
