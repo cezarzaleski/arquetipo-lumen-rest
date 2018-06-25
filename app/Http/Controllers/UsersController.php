@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Providers\UsersProvider;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use Validator;
 use App\User;
 use Illuminate\Http\Request;
@@ -35,21 +39,19 @@ class UsersController extends BaseController
     }
 
     /**
-     * Authenticate a user and return the token if the provided credentials are correct.
-     * @param User $user
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Validation\ValidationException
+     * @return array
      */
-    public function authenticate(User $user)
+    public function findAll()
     {
-        $this->validate($this->request, [
-            'email'     => 'required|email',
-            'password'  => 'required'
-        ]);
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = array(new ObjectNormalizer());
 
-        return $this->usersProvider->login(
-            $this->request->input('email'),
-            $this->request->input('password')
-        );
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $usuarios = $this->usersProvider->listarUsuarios();
+
+        return $serializer->serialize($usuarios, 'json');
+
+
     }
 }

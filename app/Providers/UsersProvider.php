@@ -79,4 +79,9 @@ class UsersProvider
         // be used to decode the token in the future.
         return JWT::encode($payload, env('JWT_SECRET'));
     }
+
+    public function listarUsuarios()
+    {
+        return $this->usersRepository->findAll();
+    }
 }

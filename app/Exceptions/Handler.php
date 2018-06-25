@@ -77,10 +77,11 @@ class Handler extends ExceptionHandler
         } elseif ($e instanceof ValidationException) {
             dd('aqui');
         }
-        return response()->json([
-            'success' => $success,
-            'status' => $status,
-            'message' => $e->getMessage()
-        ], $status);
+        return parent::render($request, $e);
+//        return response()->json([
+//            'success' => $success,
+//            'status' => $status,
+//            'message' => $e->getMessage()
+//        ], $status);
     }
 }
