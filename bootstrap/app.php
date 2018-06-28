@@ -93,6 +93,11 @@ class_alias('LaravelDoctrine\ORM\Facades\Doctrine', 'Doctrine');
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(\App\Providers\UsersProvider::class);
 
+//swagger
+$app->configure('swagger-lume');
+$app->register(\SwaggerLume\ServiceProvider::class);
+
+
 
 /*
 |--------------------------------------------------------------------------

@@ -11,7 +11,8 @@
         "laravel-doctrine/orm": "^1.4",
         "firebase/php-jwt": "^5.0",
         "symfony/serializer": "^4.1",
-        "symfony/property-access": "^4.1"
+        "symfony/property-access": "^4.1",
+        "darkaonline/swagger-lume": "5.5.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
