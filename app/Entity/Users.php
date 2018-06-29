@@ -7,19 +7,25 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Users
  *
+ * @SWG\Definition(
+ *   type="object",
+ *   @SWG\Xml(name="Category")
+ * )
  * @ORM\Table(name="TB_USERS")
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
 class Users
 {
     /**
-     * @var integer
-     *
+     * @SWG\Property(format="int64")
      * @ORM\Column(name="ID", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @var integer
      */
     private $id;
+
 
     /**
      * @var string
@@ -29,6 +35,7 @@ class Users
     private $name;
 
     /**
+     * @SWG\Property()
      * @var string
      *
      * @ORM\Column(name="EMAIL", type="string", length=100, nullable=false)
@@ -36,6 +43,7 @@ class Users
     private $email;
 
     /**
+     * @SWG\Property()
      * @var string
      *
      * @ORM\Column(name="PASSWORD", type="string", length=50, nullable=false)
@@ -113,8 +121,5 @@ class Users
         $this->password = $password;
         return $this;
     }
-
-
-
 }
 

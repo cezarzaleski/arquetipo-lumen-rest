@@ -85,6 +85,10 @@ $app->singleton(
 
 //Register Doctrine
 $app->register(LaravelDoctrine\ORM\DoctrineServiceProvider::class);
+//excluir tags do swagger nas etidades
+Doctrine\Common\Annotations\AnnotationReader::addGlobalIgnoredName('SWG\Xml');
+Doctrine\Common\Annotations\AnnotationReader::addGlobalIgnoredName('SWG\Definition');
+Doctrine\Common\Annotations\AnnotationReader::addGlobalIgnoredName('SWG\Property');
 class_alias('LaravelDoctrine\ORM\Facades\EntityManager', 'EntityManager');
 class_alias('LaravelDoctrine\ORM\Facades\Registry', 'Registry');
 class_alias('LaravelDoctrine\ORM\Facades\Doctrine', 'Doctrine');

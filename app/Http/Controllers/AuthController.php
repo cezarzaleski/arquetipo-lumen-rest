@@ -38,6 +38,36 @@ class AuthController extends BaseController
      * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
      */
+    /**
+     * @SWG\Post(
+     *     path="/users",
+     *     summary="Post to URL",
+     *     @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          required=true,
+     *          @SWG\Schema(
+     *              @SWG\Property(
+     *                  property="email",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="password",
+     *                  type="string"
+     *              )
+     *          )
+     *     ),
+     *     @SWG\Response(
+     *          response=200,
+     *          description="Example extended response",
+     *          @SWG\Schema(
+     *              @SWG\Property(
+     *                  property="data",
+     *              )
+     *          )
+     *     )
+     * )
+     */
     public function authenticate()
     {
         $this->validate(

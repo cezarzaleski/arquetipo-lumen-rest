@@ -9,5 +9,5 @@ Arquétipo API Rest com Doctrine, JWT, Swagger
 - Firebase PHP - JWT (geração e validação do token) - [Firebase PHP - JWT website](https://github.com/firebase/php-jwt).
 - Symfony Serializer (serializar entidades para json) - [Symfony Serializer](https://symfony.com/doc/current/components/serializer.html).
 - DarkaOnLine/SwaggerLume (documentar api com swagger) - [DarkaOnLine/SwaggerLume](https://github.com/DarkaOnLine/SwaggerLume).
-    - Exemplo de anotacão no contoller - [Exemplo annotation](https://github.com/zircote/swagger-php/tree/3.x/Examples/petstore-3.0).
+    - Exemplo de anotacão no contoller - [Exemplo annotation](https://github.com/zircote/swagger-php/tree/2.x).
     - Gerar documentacão swagger: `php artisan swagger-lume:generate`
