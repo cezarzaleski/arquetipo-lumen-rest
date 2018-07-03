@@ -62,32 +62,4 @@ class UsersController extends AbstractController
         $usuarios = $this->usersProvider->listarUsuarios();
         return response()->json(json_decode($this->serialize($usuarios, $this::SERIALIZE_JSON)));
     }
-
-    /**
-     * @SWG\Get(
-     *     path="/userss",
-     *     tags={"users"},
-     *     summary="Recuperar todos usuários",
-     *     operationId="asdad",
-     *     produces={"application/json"},
-     *     @SWG\Response(
-     *         response=200,
-     *         description="successful operation",
-     *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="Invalid tag value",
-     *     ),
-     *     security={
-     *         {
-     *             "petstore_auth": {"write:pets", "read:pets"}
-     *         }
-     *     }
-     * )
-     */
-    public function teste()
-    {
-        $usuarios = $this->usersProvider->listarUsuarios();
-        return response()->json(json_decode($this->serialize($usuarios, $this::SERIALIZE_JSON)));
-    }
 }
