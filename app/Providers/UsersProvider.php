@@ -82,8 +82,8 @@ class UsersProvider
         return $this->usersRepository->findAll();
     }
 
-    public function salvar($data)
+    public function salvar($data): Users
     {
-        $teste = new Users($data);
+        return $this->usersRepository->save($data);
     }
 }

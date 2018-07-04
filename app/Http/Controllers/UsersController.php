@@ -82,8 +82,8 @@ class UsersController extends AbstractController
     public function store()
     {
         $this->validar();
-        $usuarios = $this->usersProvider->salvar($this->request->toArray());
-        return response()->json($this->formatarResponse($usuarios));
+        $usuario = $this->usersProvider->salvar($this->request->toArray());
+        return response()->json($this->formatarResponse($usuario));
     }
 
     /**

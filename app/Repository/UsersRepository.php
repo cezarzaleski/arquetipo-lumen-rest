@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class UsersRepository extends EntityRepository
+class UsersRepository extends SimpleEntityRepository
 {
 
 
