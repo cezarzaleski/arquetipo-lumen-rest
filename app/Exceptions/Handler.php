@@ -63,8 +63,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+//        if (env('APP_DEBUG')) {
+//            return parent::render($request, $e);
+//        }
         $resposta = RespostaBuilder::getBuilder();
-
         switch ($e) {
             case ($e instanceof ValidationException):
                 $status = Response::HTTP_BAD_REQUEST;
@@ -77,11 +79,12 @@ class Handler extends ExceptionHandler
                     ->criarMensagem($e);
                 break;
             default:
-                $status = $e->getCode();
+                $status = Response::HTTP_INTERNAL_SERVER_ERROR;
                 $resposta->criarErro($e)
                     ->mensagem("Ocorreu um erro no servidor");
                 break;
         }
+//        $status = $status > 1 ? $status : Response::HTTP_INTERNAL_SERVER_ERROR;
         return response()->json($this->serializeProvider->serialize($resposta->build()), $status);
     }
 }

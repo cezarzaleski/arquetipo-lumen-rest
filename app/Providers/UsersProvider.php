@@ -81,4 +81,9 @@ class UsersProvider
     {
         return $this->usersRepository->findAll();
     }
+
+    public function salvar($data)
+    {
+        $teste = new Users($data);
+    }
 }

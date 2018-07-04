@@ -60,4 +60,44 @@ class UsersController extends AbstractController
         $usuarios = $this->usersProvider->listarUsuarios();
         return response()->json($this->formatarResponse($usuarios));
     }
+
+    /**
+     * @SWG\Post(
+     *     path="/users",
+     *     tags={"users"},
+     *     summary="Inserir registro de usuário",
+     *     @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          required=true,
+     *     @SWG\Schema(ref="#/definitions/Users")
+     *     ),
+     * @SWG\Response(
+     *     response=201,
+     *     description="Created",
+     *     @SWG\Schema(ref="#/definitions/Resposta"),
+     * ),
+     * )
+     */
+    public function store()
+    {
+        $this->validar();
+        $usuarios = $this->usersProvider->salvar($this->request->toArray());
+        return response()->json($this->formatarResponse($usuarios));
+    }
+
+    /**
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function validar()
+    {
+        $this->validate(
+            $this->request,
+            [
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required'
+            ]
+        );
+    }
 }

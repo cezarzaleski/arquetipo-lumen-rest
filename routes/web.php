@@ -34,4 +34,10 @@ $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
             'uses' => 'UsersController@index'
         ]
     );
+    $router->post(
+        'v1/users',
+        [
+            'uses' => 'UsersController@store'
+        ]
+    );
 });

@@ -77,11 +77,6 @@ class AuthController extends BaseController
                 'email' => 'required|email',
                 'password' => 'required'
             ]
-//            [
-//                'email.required' => 'O campo email é obrigatório',
-//                'email.email' => 'O campo email é inválido',
-//                'password.required' => 'O campo senha é obrigatório',
-//            ]
         );
 
         return $this->usersProvider->login(
