@@ -77,12 +77,29 @@ class UsersProvider
         return JWT::encode($payload, env('JWT_SECRET'));
     }
 
-    public function listarUsuarios()
+    /**
+     * @return array
+     */
+    public function listarUsuarios(): array
     {
         return $this->usersRepository->findAll();
     }
 
-    public function salvar($data): Users
+    /**
+     * Recueperar usuário pelo ID
+     * @param int $id
+     * @return Users
+     */
+    public function recuperarUsuario(int $id): Users
+    {
+        return $this->usersRepository->find($id);
+    }
+
+    /**
+     * @param array $data
+     * @return Users
+     */
+    public function salvar(array $data): Users
     {
         return $this->usersRepository->save($data);
     }

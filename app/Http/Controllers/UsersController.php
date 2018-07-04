@@ -37,6 +37,7 @@ class UsersController extends AbstractController
         $this->request = $request;
         $this->usersProvider = $usersProvider;
     }
+
     /**
      * @SWG\Get(
      *     path="/users",
@@ -52,7 +53,7 @@ class UsersController extends AbstractController
      *          @SWG\Items(ref="#/definitions/Resposta")
      *     ),
      * ),
-     *     security={{"Bearer":{}}}
+     * security={{"Bearer":{}}}
      * )
      */
     public function index()
@@ -77,6 +78,7 @@ class UsersController extends AbstractController
      *     description="Created",
      *     @SWG\Schema(ref="#/definitions/Resposta"),
      * ),
+     * security={{"Bearer":{}}}
      * )
      */
     public function store()
@@ -84,6 +86,35 @@ class UsersController extends AbstractController
         $this->validar();
         $usuario = $this->usersProvider->salvar($this->request->toArray());
         return response()->json($this->formatarResponse($usuario));
+    }
+
+    /**
+     * @SWG\Get(
+     *     path="/users/{idUsuario}",
+     *     tags={"users"},
+     *     summary="Recuperar usuário pelo identificador",
+     *     operationId="show",
+     *     produces={"application/json"},
+     *     @SWG\Parameter(
+     *         description="id do usuário",
+     *         in="path",
+     *         name="idUsuario",
+     *         required=true,
+     *         type="integer",
+     *         format="int64"
+     *     ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="OK",
+     *     @SWG\Schema(ref="#/definitions/Resposta"),
+     *     ),
+     *     security={{"Bearer":{}}}
+     * )
+     */
+    public function show($idUsuario)
+    {
+        $usuarios = $this->usersProvider->recuperarUsuario($idUsuario);
+        return response()->json($this->formatarResponse($usuarios));
     }
 
     /**

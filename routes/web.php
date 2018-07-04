@@ -40,4 +40,10 @@ $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
             'uses' => 'UsersController@store'
         ]
     );
+    $router->get(
+        'v1/users/{idUsuario:[0-9]+}',
+        [
+            'uses' => 'UsersController@show'
+        ]
+    );
 });
