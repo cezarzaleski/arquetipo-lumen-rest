@@ -96,6 +96,7 @@ class_alias('LaravelDoctrine\ORM\Facades\Doctrine', 'Doctrine');
 //$app->register(\Illuminate\Mail\MailServiceProvider::class);
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(\App\Providers\UsersProvider::class);
+$app->register(\App\Providers\SerializeProvider::class);
 
 //swagger
 $app->configure('swagger-lume');
