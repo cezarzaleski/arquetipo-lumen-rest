@@ -44,17 +44,15 @@ class UsersController extends AbstractController
      *     summary="Recuperar todos usuários",
      *     operationId="index",
      *     produces={"application/json"},
-     *     @SWG\Response(
-     *         response=200,
-     *         description="successful operation",
+     * @SWG\Response(
+     *     response=200,
+     *     description="OK",
+     *     @SWG\Schema(
+     *          type="array",
+     *          @SWG\Items(ref="#/definitions/Resposta")
      *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="Invalid tag value",
-     *     ),
-     *      security={{
-     *     "Bearer":{}
-     *   }}
+     * ),
+     *     security={{"Bearer":{}}}
      * )
      */
     public function index()

@@ -55,10 +55,7 @@ class UsersProvider
                 'token' => $this->jwt($user)
             ], Response::HTTP_OK);
         }
-        // Bad Request response
-        return response()->json([
-            'error' => 'Email ou senha inválidos'
-        ], Response::HTTP_FORBIDDEN);
+        throw new ServiceException('Email ou senha inválidos', Response::HTTP_FORBIDDEN);
     }
 
     /**

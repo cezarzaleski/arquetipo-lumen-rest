@@ -82,7 +82,6 @@ class Handler extends ExceptionHandler
                     ->mensagem("Ocorreu um erro no servidor");
                 break;
         }
-        $status = 500;
         return response()->json($this->serializeProvider->serialize($resposta->build()), $status);
     }
 }

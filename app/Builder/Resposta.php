@@ -2,25 +2,48 @@
 
 namespace App\Builder;
 
+/**
+ * Resposta
+ *
+ * @SWG\Definition(
+ *   type="object",
+ *   @SWG\Xml(name="Resposta")
+ * )
+ */
 class Resposta
 {
 
-    private $resposta;
     /**
+     * @var mixed
+     * @SWG\Property(type="object")
+     */
+    private $resposta;
+
+    /**
+     * @SWG\Property()
      * @var string
      */
     private $mensagem;
 
     /**
+     * @SWG\Property(
+     *     type="array",
+     *     @SWG\Items(
+     *         type="string"
+     *     ),
+     * )
      * @var array
      */
     private $mensagens = array();
+
     /**
      * @var string
+     * @SWG\Property()
      */
     private $excecao;
 
     /**
+     * @SWG\Property(format="bool")
      * @var bool
      */
     private $contemErro;
