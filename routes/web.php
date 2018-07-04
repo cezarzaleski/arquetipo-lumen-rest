@@ -46,4 +46,10 @@ $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
             'uses' => 'UsersController@show'
         ]
     );
+    $router->delete(
+        'v1/users/{idUsuario:[0-9]+}',
+        [
+            'uses' => 'UsersController@destroy'
+        ]
+    );
 });

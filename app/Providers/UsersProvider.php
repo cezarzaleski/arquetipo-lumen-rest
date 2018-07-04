@@ -86,13 +86,22 @@ class UsersProvider
     }
 
     /**
-     * Recueperar usuário pelo ID
+     * Recuperar usuário pelo ID
      * @param int $id
      * @return Users
      */
     public function recuperarUsuario(int $id): Users
     {
         return $this->usersRepository->find($id);
+    }
+
+    /**
+     * Excluir usuário pelo ID
+     * @param int $id
+     */
+    public function excluirUsuario(int $id)
+    {
+        $this->usersRepository->delete($id);
     }
 
     /**

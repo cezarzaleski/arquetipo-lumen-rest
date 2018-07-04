@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Providers\UsersProvider;
+use Illuminate\Http\JsonResponse;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -115,6 +116,39 @@ class UsersController extends AbstractController
     {
         $usuarios = $this->usersProvider->recuperarUsuario($idUsuario);
         return response()->json($this->formatarResponse($usuarios));
+    }
+
+    /**
+     * @SWG\Delete(
+     *     path="/users/{idUsuario}",
+     *     tags={"users"},
+     *     summary="Excluir usuário pelo identificador",
+     *     operationId="destroy",
+     *     produces={"application/json"},
+     *     @SWG\Parameter(
+     *         description="id do usuário",
+     *         in="path",
+     *         name="idUsuario",
+     *         required=true,
+     *         type="integer",
+     *         format="int64"
+     *     ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="OK",
+     *     @SWG\Schema(ref="#/definitions/Resposta"),
+     *     ),
+     *     security={{"Bearer":{}}}
+     * )
+     */
+    /**
+     * @param $idUsuario
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy($idUsuario): JsonResponse
+    {
+        $this->usersProvider->excluirUsuario($idUsuario);
+        return response()->json($this->formatarResponse("Registro excluído com sucesso"));
     }
 
     /**
