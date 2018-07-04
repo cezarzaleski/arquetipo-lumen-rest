@@ -36,9 +36,9 @@ class RespostaBuilder
         return $this->resposta;
     }
 
-    public function resposta(Resposta $resposta): RespostaBuilder
+    public function resposta($resposta): RespostaBuilder
     {
-        $resposta->setResposta($resposta);
+        $this->resposta->setResposta($resposta);
         return $this;
     }
 

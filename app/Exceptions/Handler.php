@@ -74,7 +74,7 @@ class Handler extends ExceptionHandler
             case ($e instanceof ServiceException):
                 $status = $e->getCode();
                 $resposta->criarErro($e)
-                    ->mensagem($e->getMessage());
+                    ->criarMensagem($e);
                 break;
             default:
                 $status = $e->getCode();
@@ -82,6 +82,7 @@ class Handler extends ExceptionHandler
                     ->mensagem("Ocorreu um erro no servidor");
                 break;
         }
+        $status = 500;
         return response()->json($this->serializeProvider->serialize($resposta->build()), $status);
     }
 }
