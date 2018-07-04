@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Builder\RespostaBuilder;
 use App\Providers\UsersProvider;
 use Validator;
 use Illuminate\Http\Request;
@@ -61,13 +60,6 @@ class UsersController extends AbstractController
     public function index()
     {
         $usuarios = $this->usersProvider->listarUsuarios();
-        return response()->json(
-            json_decode(
-                $this->serialize(
-                    RespostaBuilder::getBuilder()->resposta($usuarios)->build(),
-                    $this::SERIALIZE_JSON
-                )
-            )
-        );
+        return response()->json($this->formatarResponse($usuarios));
     }
 }

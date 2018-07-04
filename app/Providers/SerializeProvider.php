@@ -21,6 +21,18 @@ class SerializeProvider
      */
     public function serialize($data, $type = 'json')
     {
+        return self::serializer($data, $type);
+    }
+
+
+    /**
+     * Retorna objeto serializado em formato de array
+     * @param object $data
+     * @param string $type
+     * @return mixed
+     */
+    public static function serializer($data, $type = 'json')
+    {
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizers, $encoders);
