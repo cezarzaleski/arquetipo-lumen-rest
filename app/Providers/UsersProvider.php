@@ -105,11 +105,13 @@ class UsersProvider
     }
 
     /**
+     * Salvar infomações de usuário
      * @param array $data
+     * @param int|null $idUsuario
      * @return Users
      */
-    public function salvar(array $data): Users
+    public function salvar(array $data, int $idUsuario = null): Users
     {
-        return $this->usersRepository->save($data);
+        return $this->usersRepository->save($data, $idUsuario);
     }
 }

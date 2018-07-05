@@ -151,6 +151,41 @@ class UsersController extends AbstractController
         return response()->json($this->formatarResponse("Registro excluído com sucesso"));
     }
 
+
+    /**
+     * @SWG\Put(
+     *     path="/users/{idUsuario}",
+     *     tags={"users"},
+     *     summary="Atualizar registro de usuário",
+     *     @SWG\Parameter(
+     *         description="id do usuário",
+     *         in="path",
+     *         name="idUsuario",
+     *         required=true,
+     *         type="integer",
+     *         format="int64"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          required=true,
+     *     @SWG\Schema(ref="#/definitions/Users")
+     *     ),
+     * @SWG\Response(
+     *     response=200,
+     *     description="OK",
+     *     @SWG\Schema(ref="#/definitions/Resposta"),
+     * ),
+     * security={{"Bearer":{}}}
+     * )
+     */
+    public function update($idUsuario)
+    {
+        $this->validar();
+        $usuario = $this->usersProvider->salvar($this->request->toArray(), $idUsuario);
+        return response()->json($this->formatarResponse($usuario));
+    }
+
     /**
      * @throws \Illuminate\Validation\ValidationException
      */

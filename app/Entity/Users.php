@@ -28,6 +28,7 @@ class Users extends AbstractEntity
 
 
     /**
+     * @SWG\Property()
      * @var string
      *
      * @ORM\Column(name="NAME", type="string", length=100, nullable=false)

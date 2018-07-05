@@ -20,7 +20,7 @@ class SimpleEntityRepository extends EntityRepository
         $resolvedData = $this->resolveReferences($data);
         if ($id) {
             $entity = $entityManager->getReference($entityName, $id);
-            $entity->fromArray($resolvedData);
+            $teste = $entity->fromArray($resolvedData);
         } else {
             $entity = new $entityName($resolvedData);
         }

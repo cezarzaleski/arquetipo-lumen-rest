@@ -52,4 +52,10 @@ $router->group(['middleware' => 'jwt.auth'], function () use ($router) {
             'uses' => 'UsersController@destroy'
         ]
     );
+    $router->put(
+        'v1/users/{idUsuario:[0-9]+}',
+        [
+            'uses' => 'UsersController@update'
+        ]
+    );
 });
