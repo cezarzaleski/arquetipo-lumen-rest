@@ -181,23 +181,34 @@ class UsersController extends AbstractController
      */
     public function update($idUsuario)
     {
-        $this->validar();
+        $this->validar($idUsuario);
         $usuario = $this->usersProvider->salvar($this->request->toArray(), $idUsuario);
         return response()->json($this->formatarResponse($usuario));
     }
 
     /**
+     * Validação dos dados de entrada
+     * @param int|null $id
      * @throws \Illuminate\Validation\ValidationException
      */
-    protected function validar()
+    protected function validar(int $id = null)
     {
+        $validacaoPadrao = [
+            'name' => 'required',
+            'email' => 'required|email|unique:App\Entity\Users,email',
+            'password' => 'required'
+        ];
+
+        if (!empty($id)) {
+            $validacaoPadrao = [
+                'name' => 'required',
+                'email' => 'required|email|unique:App\Entity\Users,email,'.$id,
+                'password' => 'required'
+            ];
+        }
         $this->validate(
             $this->request,
-            [
-                'name' => 'required',
-                'email' => 'required|email',
-                'password' => 'required'
-            ]
+            $validacaoPadrao
         );
     }
 }
