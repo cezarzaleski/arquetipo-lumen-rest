@@ -2,7 +2,7 @@
 /**
  * @SWG\Swagger(
  *     schemes={"http"},
- *     host="arquetipo-lumen.local:10088",
+ *     host="localhost:8080",
  *     basePath="/v1",
  *     @SWG\Info(
  *         version="1.0.0",

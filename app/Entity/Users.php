@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *   type="object",
  *   @SWG\Xml(name="Category")
  * )
- * @ORM\Table(name="TB_USERS")
+ * @ORM\Table(name="tb_users")
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
 class Users extends AbstractEntity
